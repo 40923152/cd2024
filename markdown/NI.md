@@ -1,5 +1,5 @@
 ---
-Title: 2024 Spring 課程w2
+Title: 2024 Spring 課程W2
 Date: 2024-02-25 11:00
 Category: w2
 Tags: 網誌編寫
@@ -7,8 +7,10 @@ Slug: 2024-Spring-w2-blog-tutorial
 Author: 40923152
 ---
 
-2024 Spring 網際內容管理與協同產品設計實習課程教學導引.
+2024 Spring 協同產品設計實習課程
 
 <!-- PELICAN_END_SUMMARY -->
 
-# week2
+# WEEK2
+一.在分組倉儲中新增個人子模組
+二.使用codespaces維護分組網站
