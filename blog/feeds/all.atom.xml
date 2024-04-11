@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>40923152協同產品設計實習</title><link href="./" rel="alternate"></link><link href="./feeds/all.atom.xml" rel="self"></link><id>./</id><updated>2024-04-11T07:11:28+08:00</updated><entry><title>2024 Spring 課程W2</title><link href="./2024-Spring-w2-blog-tutorial.html" rel="alternate"></link><published>2024-02-25T11:00:00+08:00</published><updated>2024-04-11T07:11:28+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-02-25:./2024-Spring-w2-blog-tutorial.html</id><summary type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>40923152協同產品設計實習</title><link href="./" rel="alternate"></link><link href="./feeds/all.atom.xml" rel="self"></link><id>./</id><updated>2024-04-11T07:37:09+08:00</updated><entry><title>2024 Spring 課程W5</title><link href="./2024-Spring-w5-blog.html" rel="alternate"></link><published>2024-03-24T11:00:00+08:00</published><updated>2024-04-11T07:37:09+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-03-24:./2024-Spring-w5-blog.html</id><summary type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
+
+
+&lt;h1&gt;WEEK5&lt;/h1&gt;
+&lt;p&gt;一.把之前的教學影片平均分配並將字幕加入影片中&lt;/p&gt;</content><category term="w5"></category><category term="網誌編寫"></category></entry><entry><title>2024 Spring 課程W4</title><link href="./2024-Spring-w4-blog.html" rel="alternate"></link><published>2024-03-17T11:00:00+08:00</published><updated>2024-04-11T07:35:02+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-03-17:./2024-Spring-w4-blog.html</id><summary type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
+
+
+&lt;h1&gt;WEEK4&lt;/h1&gt;
+&lt;p&gt;一.在Replit裡將做好的中翻英論文push到Github的小組倉儲&lt;/p&gt;</content><category term="w4"></category><category term="網誌編寫"></category></entry><entry><title>2024 Spring 課程W3</title><link href="./2024-Spring-w3-blog.html" rel="alternate"></link><published>2024-03-10T11:00:00+08:00</published><updated>2024-04-11T07:34:55+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-03-10:./2024-Spring-w3-blog.html</id><summary type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
+
+
+&lt;h1&gt;WEEK3&lt;/h1&gt;
+&lt;p&gt;一.組員們間討論 論文中翻英每個人所負責的部份&lt;/p&gt;</content><category term="w3"></category><category term="網誌編寫"></category></entry><entry><title>2024 Spring 課程W2</title><link href="./2024-Spring-w2-blog.html" rel="alternate"></link><published>2024-03-03T11:00:00+08:00</published><updated>2024-04-11T07:30:14+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-03-03:./2024-Spring-w2-blog.html</id><summary type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
 
 
 &lt;h1&gt;WEEK2&lt;/h1&gt;
-&lt;p&gt;一.在分組倉儲中新增個人子模組
-二.使用codespaces維護分組網站&lt;/p&gt;</content><category term="w2"></category><category term="網誌編寫"></category></entry><entry><title>2024 Spring 課程</title><link href="./2024-Spring-w1-blog-tutorial.html" rel="alternate"></link><published>2024-02-18T11:00:00+08:00</published><updated>2024-02-28T16:22:26+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-02-18:./2024-Spring-w1-blog-tutorial.html</id><summary type="html">&lt;p&gt;2024 Spring 網際內容管理與協同產品設計實習課程教學導引.&lt;/p&gt;
+&lt;p&gt;一.在分組倉儲中新增個人子模組&lt;/p&gt;
+&lt;p&gt;二.使用codespaces維護分組網站&lt;/p&gt;</content><category term="w2"></category><category term="網誌編寫"></category></entry><entry><title>2024 Spring 課程W1</title><link href="./2024-Spring-w1-blog.html" rel="alternate"></link><published>2024-02-25T11:00:00+08:00</published><updated>2024-04-11T07:34:32+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-02-25:./2024-Spring-w1-blog.html</id><summary type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
+
+
+&lt;h1&gt;WEEK1&lt;/h1&gt;
+&lt;p&gt;一.建立Github帳號跟Replit和倉儲、部落格&lt;/p&gt;</content><category term="w1"></category><category term="網誌編寫"></category></entry><entry><title>2024 Spring 課程</title><link href="./2024-Spring-w1-blog-tutorial.html" rel="alternate"></link><published>2024-02-18T11:00:00+08:00</published><updated>2024-02-28T16:22:26+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-02-18:./2024-Spring-w1-blog-tutorial.html</id><summary type="html">&lt;p&gt;2024 Spring 網際內容管理與協同產品設計實習課程教學導引.&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;2024 Spring 網際內容管理與協同產品設計實習課程教學導引.&lt;/p&gt;
 
 
