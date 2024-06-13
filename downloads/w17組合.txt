@@ -1,0 +1,2599 @@
+# NX 1872
+# Journal created by User on Thu Jun 13 23:43:10 2024 台北標準時間
+
+#
+import math
+import NXOpen
+import NXOpen.Assemblies
+import NXOpen.Assemblies.ProductInterface
+import NXOpen.PDM
+import NXOpen.Positioning
+import NXOpen.Preferences
+def main() : 
+
+    theSession  = NXOpen.Session.GetSession()
+    # ----------------------------------------------
+    #   Menu: File->New...
+    # ----------------------------------------------
+    markId1 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+
+    fileNew1 = theSession.Parts.FileNew()
+
+    theSession.SetUndoMarkName(markId1, "New Dialog")
+
+    markId2 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "New")
+
+    theSession.DeleteUndoMark(markId2, None)
+
+    markId3 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "New")
+
+    fileNew1.TemplateFileName = "assembly-mm-template.prt"
+
+    fileNew1.UseBlankTemplate = False
+
+    fileNew1.ApplicationName = "AssemblyTemplate"
+
+    fileNew1.Units = NXOpen.Part.Units.Millimeters
+
+    fileNew1.RelationType = ""
+
+    fileNew1.UsesMasterModel = "No"
+
+    fileNew1.TemplateType = NXOpen.FileNewTemplateType.Item
+
+    fileNew1.TemplatePresentationName = "Assembly"
+
+    fileNew1.ItemType = ""
+
+    fileNew1.Specialization = ""
+
+    fileNew1.SetCanCreateAltrep(False)
+
+    fileNew1.NewFileName = "Z:\\assembly1.prt"
+
+    fileNew1.MasterFileName = ""
+
+    fileNew1.MakeDisplayedPart = True
+
+    fileNew1.DisplayPartOption = NXOpen.DisplayPartOption.AllowAdditional
+
+    nXObject1 = fileNew1.Commit()
+
+    workPart = theSession.Parts.Work
+    displayPart = theSession.Parts.Display
+    theSession.DeleteUndoMark(markId3, None)
+
+    fileNew1.Destroy()
+
+    theSession.ApplicationSwitchImmediate("UG_APP_MODELING")
+
+    markId4 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+
+    addComponentBuilder1 = workPart.AssemblyManager.CreateAddComponentBuilder()
+
+    componentPositioner1 = workPart.ComponentAssembly.Positioner
+
+    componentPositioner1.ClearNetwork()
+
+    componentPositioner1.BeginAssemblyConstraints()
+
+    allowInterpartPositioning1 = theSession.Preferences.Assemblies.InterpartPositioning
+
+    expression1 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+
+    unit1 = workPart.UnitCollection.FindObject("MilliMeter")
+    expression2 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression3 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+
+    unit2 = workPart.UnitCollection.FindObject("Degrees")
+    expression4 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+
+    expression5 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+
+    expression6 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression7 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+
+    expression8 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+
+    network1 = componentPositioner1.EstablishNetwork()
+
+    componentNetwork1 = network1
+    componentNetwork1.MoveObjectsState = True
+
+    componentNetwork1.DisplayComponent = NXOpen.Assemblies.Component.Null
+
+    theSession.SetUndoMarkName(markId4, "Add Component Dialog")
+
+    componentNetwork1.MoveObjectsState = True
+
+    markId5 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+
+    addComponentBuilder1.SetComponentAnchor(NXOpen.Assemblies.ProductInterface.InterfaceObject.Null)
+
+    addComponentBuilder1.SetInitialLocationType(NXOpen.Assemblies.AddComponentBuilder.LocationType.Snap)
+
+    addComponentBuilder1.SetCount(1)
+
+    addComponentBuilder1.SetScatterOption(True)
+
+    addComponentBuilder1.ReferenceSet = "Unknown"
+
+    addComponentBuilder1.Layer = -1
+
+    # ----------------------------------------------
+    #   Dialog Begin Add Component
+    # ----------------------------------------------
+    basePart1, partLoadStatus1 = theSession.Parts.OpenBase("C:\\Users\\User\\Desktop\\1-1.prt")
+
+    partLoadStatus1.Dispose()
+    addComponentBuilder1.ReferenceSet = "Use Model"
+
+    addComponentBuilder1.Layer = -1
+
+    partstouse1 = [NXOpen.BasePart.Null] * 1 
+    part1 = basePart1
+    partstouse1[0] = part1
+    addComponentBuilder1.SetPartsToAdd(partstouse1)
+
+    productinterfaceobjects1 = addComponentBuilder1.GetAllProductInterfaceObjects()
+
+    arrangement1 = workPart.ComponentAssembly.Arrangements.FindObject("Arrangement 1")
+    componentPositioner1.PrimaryArrangement = arrangement1
+
+    markId6 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Start")
+
+    expression9 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+
+    expression10 = workPart.Expressions.CreateSystemExpressionWithUnits("p9_x=0.00000000000", unit1)
+
+    expression11 = workPart.Expressions.CreateSystemExpressionWithUnits("p10_y=0.00000000000", unit1)
+
+    expression12 = workPart.Expressions.CreateSystemExpressionWithUnits("p11_z=0.00000000000", unit1)
+
+    expression13 = workPart.Expressions.CreateSystemExpressionWithUnits("p12_xdelta=0.00000000000", unit1)
+
+    expression14 = workPart.Expressions.CreateSystemExpressionWithUnits("p13_ydelta=0.00000000000", unit1)
+
+    expression15 = workPart.Expressions.CreateSystemExpressionWithUnits("p14_zdelta=0.00000000000", unit1)
+
+    expression16 = workPart.Expressions.CreateSystemExpressionWithUnits("p15_radius=0.00000000000", unit1)
+
+    expression17 = workPart.Expressions.CreateSystemExpressionWithUnits("p16_angle=0.00000000000", unit2)
+
+    expression18 = workPart.Expressions.CreateSystemExpressionWithUnits("p17_zdelta=0.00000000000", unit1)
+
+    expression19 = workPart.Expressions.CreateSystemExpressionWithUnits("p18_radius=0.00000000000", unit1)
+
+    expression20 = workPart.Expressions.CreateSystemExpressionWithUnits("p19_angle1=0.00000000000", unit2)
+
+    expression21 = workPart.Expressions.CreateSystemExpressionWithUnits("p20_angle2=0.00000000000", unit2)
+
+    expression22 = workPart.Expressions.CreateSystemExpressionWithUnits("p21_distance=0", unit1)
+
+    expression23 = workPart.Expressions.CreateSystemExpressionWithUnits("p22_arclen=0", unit1)
+
+    expression24 = workPart.Expressions.CreateSystemExpressionWithUnits("p23_percent=0", NXOpen.Unit.Null)
+
+    theSession.SetUndoMarkName(markId6, "Point Dialog")
+
+    expression25 = workPart.Expressions.CreateSystemExpressionWithUnits("p24_x=0.00000000000", unit1)
+
+    scalar1 = workPart.Scalars.CreateScalarExpression(expression25, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression26 = workPart.Expressions.CreateSystemExpressionWithUnits("p25_y=0.00000000000", unit1)
+
+    scalar2 = workPart.Scalars.CreateScalarExpression(expression26, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression27 = workPart.Expressions.CreateSystemExpressionWithUnits("p26_z=0.00000000000", unit1)
+
+    scalar3 = workPart.Scalars.CreateScalarExpression(expression27, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    point1 = workPart.Points.CreatePoint(scalar1, scalar2, scalar3, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression10.SetFormula("0")
+
+    expression11.SetFormula("0")
+
+    expression12.SetFormula("0")
+
+    expression10.SetFormula("0.00000000000")
+
+    expression11.SetFormula("0.00000000000")
+
+    expression12.SetFormula("0.00000000000")
+
+    expression10.SetFormula("0")
+
+    expression11.SetFormula("0")
+
+    expression12.SetFormula("0")
+
+    expression10.SetFormula("0.00000000000")
+
+    expression11.SetFormula("0.00000000000")
+
+    expression12.SetFormula("0.00000000000")
+
+    expression24.SetFormula("100.00000000000")
+
+    # ----------------------------------------------
+    #   Dialog Begin Point
+    # ----------------------------------------------
+    markId7 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
+
+    theSession.DeleteUndoMark(markId7, None)
+
+    markId8 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
+
+    expression10.RightHandSide = "0.00000000000"
+
+    expression11.RightHandSide = "0.00000000000"
+
+    expression12.RightHandSide = "0.00000000000"
+
+    workPart.Points.DeletePoint(point1)
+
+    expression28 = workPart.Expressions.CreateSystemExpressionWithUnits("p10_x=0.00000000000", unit1)
+
+    scalar4 = workPart.Scalars.CreateScalarExpression(expression28, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression29 = workPart.Expressions.CreateSystemExpressionWithUnits("p11_y=0.00000000000", unit1)
+
+    scalar5 = workPart.Scalars.CreateScalarExpression(expression29, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression30 = workPart.Expressions.CreateSystemExpressionWithUnits("p12_z=0.00000000000", unit1)
+
+    scalar6 = workPart.Scalars.CreateScalarExpression(expression30, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    point2 = workPart.Points.CreatePoint(scalar4, scalar5, scalar6, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    theSession.DeleteUndoMark(markId8, None)
+
+    theSession.SetUndoMarkName(markId6, "Point")
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression10)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression11)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression12)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression13)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression14)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression15)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression16)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression17)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression18)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression19)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression20)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression21)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression22)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression23)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression24)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    workPart.Expressions.Delete(expression9)
+
+    theSession.DeleteUndoMark(markId6, None)
+
+    point3 = NXOpen.Point3d(0.0, 0.0, 0.0)
+    orientation1 = NXOpen.Matrix3x3()
+
+    orientation1.Xx = 1.0
+    orientation1.Xy = 0.0
+    orientation1.Xz = 0.0
+    orientation1.Yx = 0.0
+    orientation1.Yy = 1.0
+    orientation1.Yz = 0.0
+    orientation1.Zx = 0.0
+    orientation1.Zy = 0.0
+    orientation1.Zz = 1.0
+    addComponentBuilder1.SetInitialLocationAndOrientation(point3, orientation1)
+
+    movableObjects1 = [NXOpen.NXObject.Null] * 1 
+    component1 = workPart.ComponentAssembly.RootComponent.FindObject("COMPONENT 1-1 1")
+    movableObjects1[0] = component1
+    componentNetwork1.SetMovingGroup(movableObjects1)
+
+    scaleAboutPoint1 = NXOpen.Point3d(4.9640209907011066, -26.901791175412555, 0.0)
+    viewCenter1 = NXOpen.Point3d(-4.9640209907011066, 26.901791175412555, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint1, viewCenter1)
+
+    scaleAboutPoint2 = NXOpen.Point3d(6.2050262383763846, -34.027563242709348, 0.0)
+    viewCenter2 = NXOpen.Point3d(-6.2050262383763846, 34.027563242709348, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint2, viewCenter2)
+
+    scaleAboutPoint3 = NXOpen.Point3d(7.7562827979704787, -43.034859395191205, 0.0)
+    viewCenter3 = NXOpen.Point3d(-7.7562827979704787, 43.034859395191205, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint3, viewCenter3)
+
+    markId9 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Add Component")
+
+    theSession.DeleteUndoMark(markId9, None)
+
+    markId10 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Add Component")
+
+    markId11 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "AddComponent on_apply")
+
+    componentNetwork1.Solve()
+
+    componentPositioner1.ClearNetwork()
+
+    nErrs1 = theSession.UpdateManager.AddToDeleteList(componentNetwork1)
+
+    nErrs2 = theSession.UpdateManager.DoUpdate(markId5)
+
+    componentPositioner1.EndAssemblyConstraints()
+
+    logicalobjects1 = addComponentBuilder1.GetLogicalObjectsHavingUnassignedRequiredAttributes()
+
+    addComponentBuilder1.ComponentName = "1-1"
+
+    nXObject2 = addComponentBuilder1.Commit()
+
+    errorList1 = addComponentBuilder1.GetOperationFailures()
+
+    errorList1.Dispose()
+    markId12 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "ComponentOperationUtilities CreateFixConstraint")
+
+    componentPositioner2 = workPart.ComponentAssembly.Positioner
+
+    componentPositioner2.ClearNetwork()
+
+    network2 = componentPositioner2.EstablishNetwork()
+
+    componentNetwork2 = network2
+    componentNetwork2.MoveObjectsState = True
+
+    componentNetwork2.DisplayComponent = NXOpen.Assemblies.Component.Null
+
+    componentNetwork2.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+
+    constraint1 = componentPositioner2.CreateConstraint(True)
+
+    componentConstraint1 = constraint1
+    componentConstraint1.ConstraintType = NXOpen.Positioning.Constraint.Type.Fix
+
+    component2 = nXObject2
+    constraintReference1 = componentConstraint1.CreateConstraintReference(component2, component2, False, False, False)
+
+    componentNetwork2.Solve()
+
+    componentPositioner2.ClearNetwork()
+
+    nErrs3 = theSession.UpdateManager.AddToDeleteList(componentNetwork2)
+
+    nErrs4 = theSession.UpdateManager.DoUpdate(markId4)
+
+    theSession.DeleteUndoMark(markId10, None)
+
+    theSession.SetUndoMarkName(markId4, "Add Component")
+
+    addComponentBuilder1.Destroy()
+
+    workPart.Points.DeletePoint(point2)
+
+    componentPositioner2.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+
+    theSession.DeleteUndoMark(markId5, None)
+
+    # ----------------------------------------------
+    #   Menu: Assemblies->Components->Add Component...
+    # ----------------------------------------------
+    markId13 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+
+    addComponentBuilder2 = workPart.AssemblyManager.CreateAddComponentBuilder()
+
+    componentPositioner3 = workPart.ComponentAssembly.Positioner
+
+    componentPositioner3.ClearNetwork()
+
+    componentPositioner3.PrimaryArrangement = arrangement1
+
+    componentPositioner3.BeginAssemblyConstraints()
+
+    allowInterpartPositioning2 = theSession.Preferences.Assemblies.InterpartPositioning
+
+    expression31 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+
+    expression32 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression33 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+
+    expression34 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+
+    expression35 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+
+    expression36 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression37 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+
+    expression38 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+
+    network3 = componentPositioner3.EstablishNetwork()
+
+    componentNetwork3 = network3
+    componentNetwork3.MoveObjectsState = True
+
+    componentNetwork3.DisplayComponent = NXOpen.Assemblies.Component.Null
+
+    theSession.SetUndoMarkName(markId13, "Add Component Dialog")
+
+    componentNetwork3.MoveObjectsState = True
+
+    markId14 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+
+    addComponentBuilder2.SetComponentAnchor(NXOpen.Assemblies.ProductInterface.InterfaceObject.Null)
+
+    addComponentBuilder2.SetInitialLocationType(NXOpen.Assemblies.AddComponentBuilder.LocationType.Snap)
+
+    addComponentBuilder2.SetCount(1)
+
+    addComponentBuilder2.SetScatterOption(True)
+
+    addComponentBuilder2.ReferenceSet = "Unknown"
+
+    addComponentBuilder2.Layer = -1
+
+    basePart2, partLoadStatus2 = theSession.Parts.OpenBase("C:\\Users\\User\\Desktop\\1-2.prt")
+
+    partLoadStatus2.Dispose()
+    addComponentBuilder2.ReferenceSet = "Use Model"
+
+    addComponentBuilder2.Layer = -1
+
+    partstouse2 = [NXOpen.BasePart.Null] * 1 
+    part2 = basePart2
+    partstouse2[0] = part2
+    addComponentBuilder2.SetPartsToAdd(partstouse2)
+
+    productinterfaceobjects2 = addComponentBuilder2.GetAllProductInterfaceObjects()
+
+    markId15 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Start")
+
+    expression39 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+
+    expression40 = workPart.Expressions.CreateSystemExpressionWithUnits("p9_x=0.00000000000", unit1)
+
+    expression41 = workPart.Expressions.CreateSystemExpressionWithUnits("p10_y=0.00000000000", unit1)
+
+    expression42 = workPart.Expressions.CreateSystemExpressionWithUnits("p11_z=0.00000000000", unit1)
+
+    expression43 = workPart.Expressions.CreateSystemExpressionWithUnits("p12_xdelta=0.00000000000", unit1)
+
+    expression44 = workPart.Expressions.CreateSystemExpressionWithUnits("p13_ydelta=0.00000000000", unit1)
+
+    expression45 = workPart.Expressions.CreateSystemExpressionWithUnits("p14_zdelta=0.00000000000", unit1)
+
+    expression46 = workPart.Expressions.CreateSystemExpressionWithUnits("p15_radius=0.00000000000", unit1)
+
+    expression47 = workPart.Expressions.CreateSystemExpressionWithUnits("p16_angle=0.00000000000", unit2)
+
+    expression48 = workPart.Expressions.CreateSystemExpressionWithUnits("p17_zdelta=0.00000000000", unit1)
+
+    expression49 = workPart.Expressions.CreateSystemExpressionWithUnits("p18_radius=0.00000000000", unit1)
+
+    expression50 = workPart.Expressions.CreateSystemExpressionWithUnits("p19_angle1=0.00000000000", unit2)
+
+    expression51 = workPart.Expressions.CreateSystemExpressionWithUnits("p20_angle2=0.00000000000", unit2)
+
+    expression52 = workPart.Expressions.CreateSystemExpressionWithUnits("p21_distance=0", unit1)
+
+    expression53 = workPart.Expressions.CreateSystemExpressionWithUnits("p22_arclen=0", unit1)
+
+    expression54 = workPart.Expressions.CreateSystemExpressionWithUnits("p23_percent=0", NXOpen.Unit.Null)
+
+    expression40.SetFormula("0")
+
+    expression41.SetFormula("0")
+
+    expression42.SetFormula("0")
+
+    expression43.SetFormula("0")
+
+    expression44.SetFormula("0")
+
+    expression45.SetFormula("0")
+
+    expression46.SetFormula("0")
+
+    expression47.SetFormula("0")
+
+    expression48.SetFormula("0")
+
+    expression49.SetFormula("0")
+
+    expression50.SetFormula("0")
+
+    expression51.SetFormula("0")
+
+    expression52.SetFormula("0")
+
+    expression54.SetFormula("100")
+
+    expression53.SetFormula("0")
+
+    theSession.SetUndoMarkName(markId15, "Point Dialog")
+
+    expression55 = workPart.Expressions.CreateSystemExpressionWithUnits("p24_x=0.00000000000", unit1)
+
+    scalar7 = workPart.Scalars.CreateScalarExpression(expression55, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression56 = workPart.Expressions.CreateSystemExpressionWithUnits("p25_y=0.00000000000", unit1)
+
+    scalar8 = workPart.Scalars.CreateScalarExpression(expression56, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression57 = workPart.Expressions.CreateSystemExpressionWithUnits("p26_z=0.00000000000", unit1)
+
+    scalar9 = workPart.Scalars.CreateScalarExpression(expression57, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    point4 = workPart.Points.CreatePoint(scalar7, scalar8, scalar9, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression40.SetFormula("0.00000000000")
+
+    expression41.SetFormula("0.00000000000")
+
+    expression42.SetFormula("0.00000000000")
+
+    expression40.SetFormula("0")
+
+    expression41.SetFormula("0")
+
+    expression42.SetFormula("0")
+
+    expression40.SetFormula("0.00000000000")
+
+    expression41.SetFormula("0.00000000000")
+
+    expression42.SetFormula("0.00000000000")
+
+    expression43.SetFormula("0.00000000000")
+
+    expression44.SetFormula("0.00000000000")
+
+    expression45.SetFormula("0.00000000000")
+
+    expression46.SetFormula("0.00000000000")
+
+    expression47.SetFormula("0.00000000000")
+
+    expression48.SetFormula("0.00000000000")
+
+    expression49.SetFormula("0.00000000000")
+
+    expression50.SetFormula("0.00000000000")
+
+    expression51.SetFormula("0.00000000000")
+
+    expression54.SetFormula("100.00000000000")
+
+    # ----------------------------------------------
+    #   Dialog Begin Point
+    # ----------------------------------------------
+    coordinates1 = NXOpen.Point3d(185.56159883159822, -68.808731775326194, 0.0)
+    point5 = workPart.Points.CreatePoint(coordinates1)
+
+    nErrs5 = theSession.UpdateManager.AddToDeleteList(point5)
+
+    workPart.Points.DeletePoint(point4)
+
+    expression58 = workPart.Expressions.CreateSystemExpressionWithUnits("p10_x=185.561598831598", unit1)
+
+    scalar10 = workPart.Scalars.CreateScalarExpression(expression58, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression59 = workPart.Expressions.CreateSystemExpressionWithUnits("p11_y=-68.8087317753262", unit1)
+
+    scalar11 = workPart.Scalars.CreateScalarExpression(expression59, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression60 = workPart.Expressions.CreateSystemExpressionWithUnits("p12_z=0", unit1)
+
+    scalar12 = workPart.Scalars.CreateScalarExpression(expression60, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    point6 = workPart.Points.CreatePoint(scalar10, scalar11, scalar12, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    point6.RemoveViewDependency()
+
+    expression40.SetFormula("185.561598831598")
+
+    expression41.SetFormula("-68.8087317753262")
+
+    expression42.SetFormula("0")
+
+    expression40.SetFormula("185.56159883160")
+
+    expression41.SetFormula("-68.80873177533")
+
+    expression42.SetFormula("0.00000000000")
+
+    markId16 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
+
+    theSession.DeleteUndoMark(markId16, None)
+
+    markId17 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
+
+    theSession.DeleteUndoMark(markId17, None)
+
+    theSession.SetUndoMarkName(markId15, "Point")
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression40)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression41)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression42)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression43)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression44)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression45)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression46)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression47)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression48)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression49)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression50)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression51)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression52)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression53)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression54)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    workPart.Expressions.Delete(expression39)
+
+    theSession.DeleteUndoMark(markId15, None)
+
+    point7 = NXOpen.Point3d(185.56159883159799, -68.808731775326194, 0.0)
+    orientation2 = NXOpen.Matrix3x3()
+
+    orientation2.Xx = 1.0
+    orientation2.Xy = 0.0
+    orientation2.Xz = 0.0
+    orientation2.Yx = 0.0
+    orientation2.Yy = 1.0
+    orientation2.Yz = 0.0
+    orientation2.Zx = 0.0
+    orientation2.Zy = 0.0
+    orientation2.Zz = 1.0
+    addComponentBuilder2.SetInitialLocationAndOrientation(point7, orientation2)
+
+    movableObjects2 = [NXOpen.NXObject.Null] * 1 
+    component3 = workPart.ComponentAssembly.RootComponent.FindObject("COMPONENT 1-2 1")
+    movableObjects2[0] = component3
+    componentNetwork3.SetMovingGroup(movableObjects2)
+
+    markId18 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Add Component")
+
+    theSession.DeleteUndoMark(markId18, None)
+
+    markId19 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Add Component")
+
+    markId20 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "AddComponent on_apply")
+
+    componentNetwork3.Solve()
+
+    componentPositioner3.ClearNetwork()
+
+    nErrs6 = theSession.UpdateManager.AddToDeleteList(componentNetwork3)
+
+    nErrs7 = theSession.UpdateManager.DoUpdate(markId14)
+
+    componentPositioner3.EndAssemblyConstraints()
+
+    logicalobjects2 = addComponentBuilder2.GetLogicalObjectsHavingUnassignedRequiredAttributes()
+
+    addComponentBuilder2.ComponentName = "1-2"
+
+    nXObject3 = addComponentBuilder2.Commit()
+
+    errorList2 = addComponentBuilder2.GetOperationFailures()
+
+    errorList2.Dispose()
+    theSession.DeleteUndoMark(markId19, None)
+
+    theSession.SetUndoMarkName(markId13, "Add Component")
+
+    addComponentBuilder2.Destroy()
+
+    workPart.Points.DeletePoint(point6)
+
+    componentPositioner3.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+
+    theSession.DeleteUndoMark(markId14, None)
+
+    # ----------------------------------------------
+    #   Menu: Assemblies->Components->Add Component...
+    # ----------------------------------------------
+    markId21 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+
+    addComponentBuilder3 = workPart.AssemblyManager.CreateAddComponentBuilder()
+
+    componentPositioner4 = workPart.ComponentAssembly.Positioner
+
+    componentPositioner4.ClearNetwork()
+
+    componentPositioner4.PrimaryArrangement = arrangement1
+
+    componentPositioner4.BeginAssemblyConstraints()
+
+    allowInterpartPositioning3 = theSession.Preferences.Assemblies.InterpartPositioning
+
+    expression61 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+
+    expression62 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression63 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+
+    expression64 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+
+    expression65 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+
+    expression66 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression67 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+
+    expression68 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+
+    network4 = componentPositioner4.EstablishNetwork()
+
+    componentNetwork4 = network4
+    componentNetwork4.MoveObjectsState = True
+
+    componentNetwork4.DisplayComponent = NXOpen.Assemblies.Component.Null
+
+    theSession.SetUndoMarkName(markId21, "Add Component Dialog")
+
+    componentNetwork4.MoveObjectsState = True
+
+    markId22 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+
+    addComponentBuilder3.SetComponentAnchor(NXOpen.Assemblies.ProductInterface.InterfaceObject.Null)
+
+    addComponentBuilder3.SetInitialLocationType(NXOpen.Assemblies.AddComponentBuilder.LocationType.Snap)
+
+    addComponentBuilder3.SetCount(1)
+
+    addComponentBuilder3.SetScatterOption(True)
+
+    addComponentBuilder3.ReferenceSet = "Unknown"
+
+    addComponentBuilder3.Layer = -1
+
+    addComponentBuilder3.ReferenceSet = "Use Model"
+
+    addComponentBuilder3.Layer = -1
+
+    partstouse3 = [NXOpen.BasePart.Null] * 1 
+    partstouse3[0] = part2
+    addComponentBuilder3.SetPartsToAdd(partstouse3)
+
+    productinterfaceobjects3 = addComponentBuilder3.GetAllProductInterfaceObjects()
+
+    markId23 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Start")
+
+    expression69 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+
+    expression70 = workPart.Expressions.CreateSystemExpressionWithUnits("p9_x=0.00000000000", unit1)
+
+    expression71 = workPart.Expressions.CreateSystemExpressionWithUnits("p10_y=0.00000000000", unit1)
+
+    expression72 = workPart.Expressions.CreateSystemExpressionWithUnits("p11_z=0.00000000000", unit1)
+
+    expression73 = workPart.Expressions.CreateSystemExpressionWithUnits("p12_xdelta=0.00000000000", unit1)
+
+    expression74 = workPart.Expressions.CreateSystemExpressionWithUnits("p13_ydelta=0.00000000000", unit1)
+
+    expression75 = workPart.Expressions.CreateSystemExpressionWithUnits("p14_zdelta=0.00000000000", unit1)
+
+    expression76 = workPart.Expressions.CreateSystemExpressionWithUnits("p15_radius=0.00000000000", unit1)
+
+    expression77 = workPart.Expressions.CreateSystemExpressionWithUnits("p16_angle=0.00000000000", unit2)
+
+    expression78 = workPart.Expressions.CreateSystemExpressionWithUnits("p17_zdelta=0.00000000000", unit1)
+
+    expression79 = workPart.Expressions.CreateSystemExpressionWithUnits("p18_radius=0.00000000000", unit1)
+
+    expression80 = workPart.Expressions.CreateSystemExpressionWithUnits("p19_angle1=0.00000000000", unit2)
+
+    expression81 = workPart.Expressions.CreateSystemExpressionWithUnits("p20_angle2=0.00000000000", unit2)
+
+    expression82 = workPart.Expressions.CreateSystemExpressionWithUnits("p21_distance=0", unit1)
+
+    expression83 = workPart.Expressions.CreateSystemExpressionWithUnits("p22_arclen=0", unit1)
+
+    expression84 = workPart.Expressions.CreateSystemExpressionWithUnits("p23_percent=0", NXOpen.Unit.Null)
+
+    expression70.SetFormula("185.5615988316")
+
+    expression71.SetFormula("-68.80873177533")
+
+    expression72.SetFormula("0")
+
+    expression73.SetFormula("0")
+
+    expression74.SetFormula("0")
+
+    expression75.SetFormula("0")
+
+    expression76.SetFormula("0")
+
+    expression77.SetFormula("0")
+
+    expression78.SetFormula("0")
+
+    expression79.SetFormula("0")
+
+    expression80.SetFormula("0")
+
+    expression81.SetFormula("0")
+
+    expression82.SetFormula("0")
+
+    expression84.SetFormula("100")
+
+    expression83.SetFormula("0")
+
+    theSession.SetUndoMarkName(markId23, "Point Dialog")
+
+    expression85 = workPart.Expressions.CreateSystemExpressionWithUnits("p24_x=0.00000000000", unit1)
+
+    scalar13 = workPart.Scalars.CreateScalarExpression(expression85, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression86 = workPart.Expressions.CreateSystemExpressionWithUnits("p25_y=0.00000000000", unit1)
+
+    scalar14 = workPart.Scalars.CreateScalarExpression(expression86, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression87 = workPart.Expressions.CreateSystemExpressionWithUnits("p26_z=0.00000000000", unit1)
+
+    scalar15 = workPart.Scalars.CreateScalarExpression(expression87, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    point8 = workPart.Points.CreatePoint(scalar13, scalar14, scalar15, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression70.SetFormula("0")
+
+    expression71.SetFormula("0")
+
+    expression70.SetFormula("0.00000000000")
+
+    expression71.SetFormula("0.00000000000")
+
+    expression72.SetFormula("0.00000000000")
+
+    expression70.SetFormula("0")
+
+    expression71.SetFormula("0")
+
+    expression72.SetFormula("0")
+
+    expression70.SetFormula("0.00000000000")
+
+    expression71.SetFormula("0.00000000000")
+
+    expression72.SetFormula("0.00000000000")
+
+    expression73.SetFormula("0.00000000000")
+
+    expression74.SetFormula("0.00000000000")
+
+    expression75.SetFormula("0.00000000000")
+
+    expression76.SetFormula("0.00000000000")
+
+    expression77.SetFormula("0.00000000000")
+
+    expression78.SetFormula("0.00000000000")
+
+    expression79.SetFormula("0.00000000000")
+
+    expression80.SetFormula("0.00000000000")
+
+    expression81.SetFormula("0.00000000000")
+
+    expression84.SetFormula("100.00000000000")
+
+    # ----------------------------------------------
+    #   Dialog Begin Point
+    # ----------------------------------------------
+    coordinates2 = NXOpen.Point3d(-385.1421160815388, -30.972404712335788, 0.0)
+    point9 = workPart.Points.CreatePoint(coordinates2)
+
+    nErrs8 = theSession.UpdateManager.AddToDeleteList(point9)
+
+    workPart.Points.DeletePoint(point8)
+
+    expression88 = workPart.Expressions.CreateSystemExpressionWithUnits("p10_x=-385.142116081539", unit1)
+
+    scalar16 = workPart.Scalars.CreateScalarExpression(expression88, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression89 = workPart.Expressions.CreateSystemExpressionWithUnits("p11_y=-30.9724047123358", unit1)
+
+    scalar17 = workPart.Scalars.CreateScalarExpression(expression89, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression90 = workPart.Expressions.CreateSystemExpressionWithUnits("p12_z=0", unit1)
+
+    scalar18 = workPart.Scalars.CreateScalarExpression(expression90, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    point10 = workPart.Points.CreatePoint(scalar16, scalar17, scalar18, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    point10.RemoveViewDependency()
+
+    expression70.SetFormula("-385.142116081539")
+
+    expression71.SetFormula("-30.9724047123358")
+
+    expression72.SetFormula("0")
+
+    expression70.SetFormula("-385.14211608154")
+
+    expression71.SetFormula("-30.97240471234")
+
+    expression72.SetFormula("0.00000000000")
+
+    markId24 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
+
+    theSession.DeleteUndoMark(markId24, None)
+
+    markId25 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
+
+    theSession.DeleteUndoMark(markId25, None)
+
+    theSession.SetUndoMarkName(markId23, "Point")
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression70)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression71)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression72)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression73)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression74)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression75)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression76)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression77)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression78)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression79)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression80)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression81)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression82)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression83)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression84)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    workPart.Expressions.Delete(expression69)
+
+    theSession.DeleteUndoMark(markId23, None)
+
+    point11 = NXOpen.Point3d(-385.14211608153897, -30.972404712335798, 0.0)
+    orientation3 = NXOpen.Matrix3x3()
+
+    orientation3.Xx = 1.0
+    orientation3.Xy = 0.0
+    orientation3.Xz = 0.0
+    orientation3.Yx = 0.0
+    orientation3.Yy = 1.0
+    orientation3.Yz = 0.0
+    orientation3.Zx = 0.0
+    orientation3.Zy = 0.0
+    orientation3.Zz = 1.0
+    addComponentBuilder3.SetInitialLocationAndOrientation(point11, orientation3)
+
+    movableObjects3 = [NXOpen.NXObject.Null] * 1 
+    component4 = workPart.ComponentAssembly.RootComponent.FindObject("COMPONENT 1-2 1")
+    movableObjects3[0] = component4
+    componentNetwork4.SetMovingGroup(movableObjects3)
+
+    markId26 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Add Component")
+
+    theSession.DeleteUndoMark(markId26, None)
+
+    markId27 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Add Component")
+
+    markId28 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "AddComponent on_apply")
+
+    componentNetwork4.Solve()
+
+    componentPositioner4.ClearNetwork()
+
+    nErrs9 = theSession.UpdateManager.AddToDeleteList(componentNetwork4)
+
+    nErrs10 = theSession.UpdateManager.DoUpdate(markId22)
+
+    componentPositioner4.EndAssemblyConstraints()
+
+    logicalobjects3 = addComponentBuilder3.GetLogicalObjectsHavingUnassignedRequiredAttributes()
+
+    addComponentBuilder3.ComponentName = "1-2"
+
+    nXObject4 = addComponentBuilder3.Commit()
+
+    errorList3 = addComponentBuilder3.GetOperationFailures()
+
+    errorList3.Dispose()
+    theSession.DeleteUndoMark(markId27, None)
+
+    theSession.SetUndoMarkName(markId21, "Add Component")
+
+    addComponentBuilder3.Destroy()
+
+    workPart.Points.DeletePoint(point10)
+
+    componentPositioner4.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+
+    theSession.DeleteUndoMark(markId22, None)
+
+    # ----------------------------------------------
+    #   Menu: Assemblies->Components->Add Component...
+    # ----------------------------------------------
+    markId29 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+
+    addComponentBuilder4 = workPart.AssemblyManager.CreateAddComponentBuilder()
+
+    componentPositioner5 = workPart.ComponentAssembly.Positioner
+
+    componentPositioner5.ClearNetwork()
+
+    componentPositioner5.PrimaryArrangement = arrangement1
+
+    componentPositioner5.BeginAssemblyConstraints()
+
+    allowInterpartPositioning4 = theSession.Preferences.Assemblies.InterpartPositioning
+
+    expression91 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+
+    expression92 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression93 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+
+    expression94 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+
+    expression95 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+
+    expression96 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression97 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+
+    expression98 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+
+    network5 = componentPositioner5.EstablishNetwork()
+
+    componentNetwork5 = network5
+    componentNetwork5.MoveObjectsState = True
+
+    componentNetwork5.DisplayComponent = NXOpen.Assemblies.Component.Null
+
+    theSession.SetUndoMarkName(markId29, "Add Component Dialog")
+
+    componentNetwork5.MoveObjectsState = True
+
+    markId30 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+
+    addComponentBuilder4.SetComponentAnchor(NXOpen.Assemblies.ProductInterface.InterfaceObject.Null)
+
+    addComponentBuilder4.SetInitialLocationType(NXOpen.Assemblies.AddComponentBuilder.LocationType.Snap)
+
+    addComponentBuilder4.SetCount(1)
+
+    addComponentBuilder4.SetScatterOption(True)
+
+    addComponentBuilder4.ReferenceSet = "Unknown"
+
+    addComponentBuilder4.Layer = -1
+
+    addComponentBuilder4.ReferenceSet = "Use Model"
+
+    addComponentBuilder4.Layer = -1
+
+    partstouse4 = [NXOpen.BasePart.Null] * 1 
+    partstouse4[0] = part2
+    addComponentBuilder4.SetPartsToAdd(partstouse4)
+
+    productinterfaceobjects4 = addComponentBuilder4.GetAllProductInterfaceObjects()
+
+    markId31 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Start")
+
+    expression99 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+
+    expression100 = workPart.Expressions.CreateSystemExpressionWithUnits("p9_x=0.00000000000", unit1)
+
+    expression101 = workPart.Expressions.CreateSystemExpressionWithUnits("p10_y=0.00000000000", unit1)
+
+    expression102 = workPart.Expressions.CreateSystemExpressionWithUnits("p11_z=0.00000000000", unit1)
+
+    expression103 = workPart.Expressions.CreateSystemExpressionWithUnits("p12_xdelta=0.00000000000", unit1)
+
+    expression104 = workPart.Expressions.CreateSystemExpressionWithUnits("p13_ydelta=0.00000000000", unit1)
+
+    expression105 = workPart.Expressions.CreateSystemExpressionWithUnits("p14_zdelta=0.00000000000", unit1)
+
+    expression106 = workPart.Expressions.CreateSystemExpressionWithUnits("p15_radius=0.00000000000", unit1)
+
+    expression107 = workPart.Expressions.CreateSystemExpressionWithUnits("p16_angle=0.00000000000", unit2)
+
+    expression108 = workPart.Expressions.CreateSystemExpressionWithUnits("p17_zdelta=0.00000000000", unit1)
+
+    expression109 = workPart.Expressions.CreateSystemExpressionWithUnits("p18_radius=0.00000000000", unit1)
+
+    expression110 = workPart.Expressions.CreateSystemExpressionWithUnits("p19_angle1=0.00000000000", unit2)
+
+    expression111 = workPart.Expressions.CreateSystemExpressionWithUnits("p20_angle2=0.00000000000", unit2)
+
+    expression112 = workPart.Expressions.CreateSystemExpressionWithUnits("p21_distance=0", unit1)
+
+    expression113 = workPart.Expressions.CreateSystemExpressionWithUnits("p22_arclen=0", unit1)
+
+    expression114 = workPart.Expressions.CreateSystemExpressionWithUnits("p23_percent=0", NXOpen.Unit.Null)
+
+    expression100.SetFormula("-385.14211608154")
+
+    expression101.SetFormula("-30.97240471234")
+
+    expression102.SetFormula("0")
+
+    expression103.SetFormula("0")
+
+    expression104.SetFormula("0")
+
+    expression105.SetFormula("0")
+
+    expression106.SetFormula("0")
+
+    expression107.SetFormula("0")
+
+    expression108.SetFormula("0")
+
+    expression109.SetFormula("0")
+
+    expression110.SetFormula("0")
+
+    expression111.SetFormula("0")
+
+    expression112.SetFormula("0")
+
+    expression114.SetFormula("100")
+
+    expression113.SetFormula("0")
+
+    theSession.SetUndoMarkName(markId31, "Point Dialog")
+
+    expression115 = workPart.Expressions.CreateSystemExpressionWithUnits("p24_x=0.00000000000", unit1)
+
+    scalar19 = workPart.Scalars.CreateScalarExpression(expression115, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression116 = workPart.Expressions.CreateSystemExpressionWithUnits("p25_y=0.00000000000", unit1)
+
+    scalar20 = workPart.Scalars.CreateScalarExpression(expression116, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression117 = workPart.Expressions.CreateSystemExpressionWithUnits("p26_z=0.00000000000", unit1)
+
+    scalar21 = workPart.Scalars.CreateScalarExpression(expression117, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    point12 = workPart.Points.CreatePoint(scalar19, scalar20, scalar21, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression100.SetFormula("0")
+
+    expression101.SetFormula("0")
+
+    expression100.SetFormula("0.00000000000")
+
+    expression101.SetFormula("0.00000000000")
+
+    expression102.SetFormula("0.00000000000")
+
+    expression100.SetFormula("0")
+
+    expression101.SetFormula("0")
+
+    expression102.SetFormula("0")
+
+    expression100.SetFormula("0.00000000000")
+
+    expression101.SetFormula("0.00000000000")
+
+    expression102.SetFormula("0.00000000000")
+
+    expression103.SetFormula("0.00000000000")
+
+    expression104.SetFormula("0.00000000000")
+
+    expression105.SetFormula("0.00000000000")
+
+    expression106.SetFormula("0.00000000000")
+
+    expression107.SetFormula("0.00000000000")
+
+    expression108.SetFormula("0.00000000000")
+
+    expression109.SetFormula("0.00000000000")
+
+    expression110.SetFormula("0.00000000000")
+
+    expression111.SetFormula("0.00000000000")
+
+    expression114.SetFormula("100.00000000000")
+
+    # ----------------------------------------------
+    #   Dialog Begin Point
+    # ----------------------------------------------
+    coordinates3 = NXOpen.Point3d(-196.97331239726353, -153.46585181234553, 0.0)
+    point13 = workPart.Points.CreatePoint(coordinates3)
+
+    nErrs11 = theSession.UpdateManager.AddToDeleteList(point13)
+
+    workPart.Points.DeletePoint(point12)
+
+    expression118 = workPart.Expressions.CreateSystemExpressionWithUnits("p10_x=-196.973312397264", unit1)
+
+    scalar22 = workPart.Scalars.CreateScalarExpression(expression118, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression119 = workPart.Expressions.CreateSystemExpressionWithUnits("p11_y=-153.465851812346", unit1)
+
+    scalar23 = workPart.Scalars.CreateScalarExpression(expression119, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression120 = workPart.Expressions.CreateSystemExpressionWithUnits("p12_z=0", unit1)
+
+    scalar24 = workPart.Scalars.CreateScalarExpression(expression120, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    point14 = workPart.Points.CreatePoint(scalar22, scalar23, scalar24, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    point14.RemoveViewDependency()
+
+    expression100.SetFormula("-196.973312397264")
+
+    expression101.SetFormula("-153.465851812346")
+
+    expression102.SetFormula("0")
+
+    expression100.SetFormula("-196.97331239726")
+
+    expression101.SetFormula("-153.46585181235")
+
+    expression102.SetFormula("0.00000000000")
+
+    markId32 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
+
+    theSession.DeleteUndoMark(markId32, None)
+
+    markId33 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
+
+    theSession.DeleteUndoMark(markId33, None)
+
+    theSession.SetUndoMarkName(markId31, "Point")
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression100)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression101)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression102)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression103)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression104)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression105)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression106)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression107)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression108)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression109)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression110)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression111)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression112)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression113)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression114)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    workPart.Expressions.Delete(expression99)
+
+    theSession.DeleteUndoMark(markId31, None)
+
+    point15 = NXOpen.Point3d(-196.97331239726401, -153.46585181234599, 0.0)
+    orientation4 = NXOpen.Matrix3x3()
+
+    orientation4.Xx = 1.0
+    orientation4.Xy = 0.0
+    orientation4.Xz = 0.0
+    orientation4.Yx = 0.0
+    orientation4.Yy = 1.0
+    orientation4.Yz = 0.0
+    orientation4.Zx = 0.0
+    orientation4.Zy = 0.0
+    orientation4.Zz = 1.0
+    addComponentBuilder4.SetInitialLocationAndOrientation(point15, orientation4)
+
+    movableObjects4 = [NXOpen.NXObject.Null] * 1 
+    component5 = workPart.ComponentAssembly.RootComponent.FindObject("COMPONENT 1-2 1")
+    movableObjects4[0] = component5
+    componentNetwork5.SetMovingGroup(movableObjects4)
+
+    markId34 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Add Component")
+
+    theSession.DeleteUndoMark(markId34, None)
+
+    markId35 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Add Component")
+
+    markId36 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "AddComponent on_apply")
+
+    componentNetwork5.Solve()
+
+    componentPositioner5.ClearNetwork()
+
+    nErrs12 = theSession.UpdateManager.AddToDeleteList(componentNetwork5)
+
+    nErrs13 = theSession.UpdateManager.DoUpdate(markId30)
+
+    componentPositioner5.EndAssemblyConstraints()
+
+    logicalobjects4 = addComponentBuilder4.GetLogicalObjectsHavingUnassignedRequiredAttributes()
+
+    addComponentBuilder4.ComponentName = "1-2"
+
+    nXObject5 = addComponentBuilder4.Commit()
+
+    errorList4 = addComponentBuilder4.GetOperationFailures()
+
+    errorList4.Dispose()
+    theSession.DeleteUndoMark(markId35, None)
+
+    theSession.SetUndoMarkName(markId29, "Add Component")
+
+    addComponentBuilder4.Destroy()
+
+    workPart.Points.DeletePoint(point14)
+
+    componentPositioner5.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+
+    theSession.DeleteUndoMark(markId30, None)
+
+    # ----------------------------------------------
+    #   Menu: Assemblies->Components->Add Component...
+    # ----------------------------------------------
+    markId37 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+
+    addComponentBuilder5 = workPart.AssemblyManager.CreateAddComponentBuilder()
+
+    componentPositioner6 = workPart.ComponentAssembly.Positioner
+
+    componentPositioner6.ClearNetwork()
+
+    componentPositioner6.PrimaryArrangement = arrangement1
+
+    componentPositioner6.BeginAssemblyConstraints()
+
+    allowInterpartPositioning5 = theSession.Preferences.Assemblies.InterpartPositioning
+
+    expression121 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+
+    expression122 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression123 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+
+    expression124 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+
+    expression125 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+
+    expression126 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression127 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+
+    expression128 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+
+    network6 = componentPositioner6.EstablishNetwork()
+
+    componentNetwork6 = network6
+    componentNetwork6.MoveObjectsState = True
+
+    componentNetwork6.DisplayComponent = NXOpen.Assemblies.Component.Null
+
+    theSession.SetUndoMarkName(markId37, "Add Component Dialog")
+
+    componentNetwork6.MoveObjectsState = True
+
+    markId38 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+
+    addComponentBuilder5.SetComponentAnchor(NXOpen.Assemblies.ProductInterface.InterfaceObject.Null)
+
+    addComponentBuilder5.SetInitialLocationType(NXOpen.Assemblies.AddComponentBuilder.LocationType.Snap)
+
+    addComponentBuilder5.SetCount(1)
+
+    addComponentBuilder5.SetScatterOption(True)
+
+    addComponentBuilder5.ReferenceSet = "Unknown"
+
+    addComponentBuilder5.Layer = -1
+
+    addComponentBuilder5.ReferenceSet = "Use Model"
+
+    addComponentBuilder5.Layer = -1
+
+    partstouse5 = [NXOpen.BasePart.Null] * 1 
+    partstouse5[0] = part2
+    addComponentBuilder5.SetPartsToAdd(partstouse5)
+
+    productinterfaceobjects5 = addComponentBuilder5.GetAllProductInterfaceObjects()
+
+    markId39 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Start")
+
+    expression129 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+
+    expression130 = workPart.Expressions.CreateSystemExpressionWithUnits("p9_x=0.00000000000", unit1)
+
+    expression131 = workPart.Expressions.CreateSystemExpressionWithUnits("p10_y=0.00000000000", unit1)
+
+    expression132 = workPart.Expressions.CreateSystemExpressionWithUnits("p11_z=0.00000000000", unit1)
+
+    expression133 = workPart.Expressions.CreateSystemExpressionWithUnits("p12_xdelta=0.00000000000", unit1)
+
+    expression134 = workPart.Expressions.CreateSystemExpressionWithUnits("p13_ydelta=0.00000000000", unit1)
+
+    expression135 = workPart.Expressions.CreateSystemExpressionWithUnits("p14_zdelta=0.00000000000", unit1)
+
+    expression136 = workPart.Expressions.CreateSystemExpressionWithUnits("p15_radius=0.00000000000", unit1)
+
+    expression137 = workPart.Expressions.CreateSystemExpressionWithUnits("p16_angle=0.00000000000", unit2)
+
+    expression138 = workPart.Expressions.CreateSystemExpressionWithUnits("p17_zdelta=0.00000000000", unit1)
+
+    expression139 = workPart.Expressions.CreateSystemExpressionWithUnits("p18_radius=0.00000000000", unit1)
+
+    expression140 = workPart.Expressions.CreateSystemExpressionWithUnits("p19_angle1=0.00000000000", unit2)
+
+    expression141 = workPart.Expressions.CreateSystemExpressionWithUnits("p20_angle2=0.00000000000", unit2)
+
+    expression142 = workPart.Expressions.CreateSystemExpressionWithUnits("p21_distance=0", unit1)
+
+    expression143 = workPart.Expressions.CreateSystemExpressionWithUnits("p22_arclen=0", unit1)
+
+    expression144 = workPart.Expressions.CreateSystemExpressionWithUnits("p23_percent=0", NXOpen.Unit.Null)
+
+    expression130.SetFormula("-196.97331239726")
+
+    expression131.SetFormula("-153.46585181235")
+
+    expression132.SetFormula("0")
+
+    expression133.SetFormula("0")
+
+    expression134.SetFormula("0")
+
+    expression135.SetFormula("0")
+
+    expression136.SetFormula("0")
+
+    expression137.SetFormula("0")
+
+    expression138.SetFormula("0")
+
+    expression139.SetFormula("0")
+
+    expression140.SetFormula("0")
+
+    expression141.SetFormula("0")
+
+    expression142.SetFormula("0")
+
+    expression144.SetFormula("100")
+
+    expression143.SetFormula("0")
+
+    theSession.SetUndoMarkName(markId39, "Point Dialog")
+
+    expression145 = workPart.Expressions.CreateSystemExpressionWithUnits("p24_x=0.00000000000", unit1)
+
+    scalar25 = workPart.Scalars.CreateScalarExpression(expression145, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression146 = workPart.Expressions.CreateSystemExpressionWithUnits("p25_y=0.00000000000", unit1)
+
+    scalar26 = workPart.Scalars.CreateScalarExpression(expression146, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression147 = workPart.Expressions.CreateSystemExpressionWithUnits("p26_z=0.00000000000", unit1)
+
+    scalar27 = workPart.Scalars.CreateScalarExpression(expression147, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    point16 = workPart.Points.CreatePoint(scalar25, scalar26, scalar27, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression130.SetFormula("0")
+
+    expression131.SetFormula("0")
+
+    expression130.SetFormula("0.00000000000")
+
+    expression131.SetFormula("0.00000000000")
+
+    expression132.SetFormula("0.00000000000")
+
+    expression130.SetFormula("0")
+
+    expression131.SetFormula("0")
+
+    expression132.SetFormula("0")
+
+    expression130.SetFormula("0.00000000000")
+
+    expression131.SetFormula("0.00000000000")
+
+    expression132.SetFormula("0.00000000000")
+
+    expression133.SetFormula("0.00000000000")
+
+    expression134.SetFormula("0.00000000000")
+
+    expression135.SetFormula("0.00000000000")
+
+    expression136.SetFormula("0.00000000000")
+
+    expression137.SetFormula("0.00000000000")
+
+    expression138.SetFormula("0.00000000000")
+
+    expression139.SetFormula("0.00000000000")
+
+    expression140.SetFormula("0.00000000000")
+
+    expression141.SetFormula("0.00000000000")
+
+    expression144.SetFormula("100.00000000000")
+
+    # ----------------------------------------------
+    #   Dialog Begin Point
+    # ----------------------------------------------
+    coordinates4 = NXOpen.Point3d(-21.51394198427748, -212.38840593210034, 0.0)
+    point17 = workPart.Points.CreatePoint(coordinates4)
+
+    nErrs14 = theSession.UpdateManager.AddToDeleteList(point17)
+
+    workPart.Points.DeletePoint(point16)
+
+    expression148 = workPart.Expressions.CreateSystemExpressionWithUnits("p10_x=-21.5139419842775", unit1)
+
+    scalar28 = workPart.Scalars.CreateScalarExpression(expression148, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression149 = workPart.Expressions.CreateSystemExpressionWithUnits("p11_y=-212.3884059321", unit1)
+
+    scalar29 = workPart.Scalars.CreateScalarExpression(expression149, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    expression150 = workPart.Expressions.CreateSystemExpressionWithUnits("p12_z=0", unit1)
+
+    scalar30 = workPart.Scalars.CreateScalarExpression(expression150, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    point18 = workPart.Points.CreatePoint(scalar28, scalar29, scalar30, NXOpen.SmartObject.UpdateOption.WithinModeling)
+
+    point18.RemoveViewDependency()
+
+    expression130.SetFormula("-21.5139419842775")
+
+    expression131.SetFormula("-212.3884059321")
+
+    expression132.SetFormula("0")
+
+    expression130.SetFormula("-21.51394198428")
+
+    expression131.SetFormula("-212.38840593210")
+
+    expression132.SetFormula("0.00000000000")
+
+    markId40 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
+
+    theSession.DeleteUndoMark(markId40, None)
+
+    markId41 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
+
+    theSession.DeleteUndoMark(markId41, None)
+
+    theSession.SetUndoMarkName(markId39, "Point")
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression130)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression131)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression132)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression133)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression134)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression135)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression136)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression137)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression138)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression139)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression140)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression141)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression142)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression143)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression144)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+
+    workPart.Expressions.Delete(expression129)
+
+    theSession.DeleteUndoMark(markId39, None)
+
+    point19 = NXOpen.Point3d(-21.513941984277501, -212.3884059321, 0.0)
+    orientation5 = NXOpen.Matrix3x3()
+
+    orientation5.Xx = 1.0
+    orientation5.Xy = 0.0
+    orientation5.Xz = 0.0
+    orientation5.Yx = 0.0
+    orientation5.Yy = 1.0
+    orientation5.Yz = 0.0
+    orientation5.Zx = 0.0
+    orientation5.Zy = 0.0
+    orientation5.Zz = 1.0
+    addComponentBuilder5.SetInitialLocationAndOrientation(point19, orientation5)
+
+    movableObjects5 = [NXOpen.NXObject.Null] * 1 
+    component6 = workPart.ComponentAssembly.RootComponent.FindObject("COMPONENT 1-2 1")
+    movableObjects5[0] = component6
+    componentNetwork6.SetMovingGroup(movableObjects5)
+
+    markId42 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Add Component")
+
+    theSession.DeleteUndoMark(markId42, None)
+
+    markId43 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Add Component")
+
+    markId44 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "AddComponent on_apply")
+
+    componentNetwork6.Solve()
+
+    componentPositioner6.ClearNetwork()
+
+    nErrs15 = theSession.UpdateManager.AddToDeleteList(componentNetwork6)
+
+    nErrs16 = theSession.UpdateManager.DoUpdate(markId38)
+
+    componentPositioner6.EndAssemblyConstraints()
+
+    logicalobjects5 = addComponentBuilder5.GetLogicalObjectsHavingUnassignedRequiredAttributes()
+
+    addComponentBuilder5.ComponentName = "1-2"
+
+    nXObject6 = addComponentBuilder5.Commit()
+
+    errorList5 = addComponentBuilder5.GetOperationFailures()
+
+    errorList5.Dispose()
+    theSession.DeleteUndoMark(markId43, None)
+
+    theSession.SetUndoMarkName(markId37, "Add Component")
+
+    addComponentBuilder5.Destroy()
+
+    workPart.Points.DeletePoint(point18)
+
+    componentPositioner6.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+
+    theSession.DeleteUndoMark(markId38, None)
+
+    # ----------------------------------------------
+    #   Menu: Assemblies->Component Position->Assembly Constraints...
+    # ----------------------------------------------
+    markId45 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Create Constraints with Positioning Task")
+
+    markId46 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+
+    componentPositioner7 = workPart.ComponentAssembly.Positioner
+
+    componentPositioner7.ClearNetwork()
+
+    componentPositioner7.PrimaryArrangement = arrangement1
+
+    componentPositioner7.BeginAssemblyConstraints()
+
+    allowInterpartPositioning6 = theSession.Preferences.Assemblies.InterpartPositioning
+
+    expression151 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+
+    expression152 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression153 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+
+    expression154 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+
+    expression155 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+
+    expression156 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression157 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+
+    expression158 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+
+    network7 = componentPositioner7.EstablishNetwork()
+
+    componentNetwork7 = network7
+    componentNetwork7.MoveObjectsState = True
+
+    componentNetwork7.DisplayComponent = NXOpen.Assemblies.Component.Null
+
+    componentNetwork7.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+
+    theSession.SetUndoMarkName(markId46, "Assembly Constraints Dialog")
+
+    componentNetwork7.MoveObjectsState = True
+
+    markId47 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+
+    component7 = nXObject4
+    face1 = component7.FindObject("PROTO#.Features|EXTRUDE(2)|FACE 150 {(2.5,0,12.5) EXTRUDE(2)}")
+    line1 = workPart.Lines.CreateFaceAxis(face1, NXOpen.SmartObject.UpdateOption.AfterModeling)
+
+    line1.SetVisibility(NXOpen.SmartObject.VisibilityOption.Visible)
+
+    objects1 = [NXOpen.TaggedObject.Null] * 1 
+    objects1[0] = line1
+    nErrs17 = theSession.UpdateManager.AddObjectsToDeleteList(objects1)
+
+    componentPositioner7.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+
+    componentPositioner7.EndAssemblyConstraints()
+
+    theSession.DeleteUndoMark(markId47, None)
+
+    theSession.UndoToMark(markId46, None)
+
+    theSession.DeleteUndoMark(markId46, None)
+
+    theSession.DeleteUndoMark(markId45, None)
+
+    # ----------------------------------------------
+    #   Menu: Assemblies->Component Position->Assembly Constraints...
+    # ----------------------------------------------
+    markId48 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Create Constraints with Positioning Task")
+
+    markId49 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+
+    componentPositioner8 = workPart.ComponentAssembly.Positioner
+
+    componentPositioner8.ClearNetwork()
+
+    componentPositioner8.PrimaryArrangement = arrangement1
+
+    componentPositioner8.BeginAssemblyConstraints()
+
+    allowInterpartPositioning7 = theSession.Preferences.Assemblies.InterpartPositioning
+
+    expression159 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+
+    expression160 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression161 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+
+    expression162 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+
+    expression163 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+
+    expression164 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression165 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+
+    expression166 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+
+    network8 = componentPositioner8.EstablishNetwork()
+
+    componentNetwork8 = network8
+    componentNetwork8.MoveObjectsState = True
+
+    componentNetwork8.DisplayComponent = NXOpen.Assemblies.Component.Null
+
+    componentNetwork8.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+
+    theSession.SetUndoMarkName(markId49, "Assembly Constraints Dialog")
+
+    componentNetwork8.MoveObjectsState = True
+
+    markId50 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+
+    line2 = workPart.Lines.CreateFaceAxis(face1, NXOpen.SmartObject.UpdateOption.AfterModeling)
+
+    objects2 = [NXOpen.TaggedObject.Null] * 1 
+    objects2[0] = line2
+    nErrs18 = theSession.UpdateManager.AddObjectsToDeleteList(objects2)
+
+    face2 = component2.FindObject("PROTO#.Features|EXTRUDE(7)|FACE 160 1 {(142.5,72.6794919243113,7.5) EXTRUDE(2)}")
+    line3 = workPart.Lines.CreateFaceAxis(face2, NXOpen.SmartObject.UpdateOption.AfterModeling)
+
+    markId51 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Create Constraint")
+
+    constraint2 = componentPositioner8.CreateConstraint(True)
+
+    componentConstraint2 = constraint2
+    componentConstraint2.ConstraintType = NXOpen.Positioning.Constraint.Type.Concentric
+
+    edge1 = component7.FindObject("PROTO#.Features|EXTRUDE(2)|EDGE * 130 * 150 {(-1.25,-2.1650635094611,25)(2.5,0,25)(-1.25,2.1650635094611,25) EXTRUDE(2)}")
+    constraintReference2 = componentConstraint2.CreateConstraintReference(component7, edge1, False, False, False)
+
+    helpPoint1 = NXOpen.Point3d(-386.64539825136632, -28.974870552958453, 25.0)
+    constraintReference2.HelpPoint = helpPoint1
+
+    edge2 = component2.FindObject("PROTO#.Features|EXTRUDE(2)|EDGE * 130 EXTRUDE(7) 160 {(150,74.8445554337723,8.75)(150,72.6794919243113,12.5)(150,70.5144284148502,8.75) EXTRUDE(2)}")
+    constraintReference3 = componentConstraint2.CreateConstraintReference(component2, edge2, False, False, False)
+
+    helpPoint2 = NXOpen.Point3d(150.0, 70.33538909714062, 10.869012045745514)
+    constraintReference3.HelpPoint = helpPoint2
+
+    constraintReference3.SetFixHint(True)
+
+    objects3 = [NXOpen.TaggedObject.Null] * 1 
+    objects3[0] = line3
+    nErrs19 = theSession.UpdateManager.AddObjectsToDeleteList(objects3)
+
+    componentNetwork8.Solve()
+
+    markId52 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints")
+
+    theSession.DeleteUndoMark(markId52, None)
+
+    markId53 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints")
+
+    nErrs20 = theSession.UpdateManager.DoUpdate(markId50)
+
+    componentNetwork8.Solve()
+
+    componentPositioner8.ClearNetwork()
+
+    nErrs21 = theSession.UpdateManager.AddToDeleteList(componentNetwork8)
+
+    componentPositioner8.DeleteNonPersistentConstraints()
+
+    nErrs22 = theSession.UpdateManager.DoUpdate(markId50)
+
+    theSession.DeleteUndoMark(markId53, None)
+
+    theSession.SetUndoMarkName(markId49, "Assembly Constraints")
+
+    componentPositioner8.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+
+    componentPositioner8.EndAssemblyConstraints()
+
+    theSession.DeleteUndoMark(markId50, None)
+
+    theSession.DeleteUndoMark(markId51, None)
+
+    theSession.DeleteUndoMark(markId48, None)
+
+    # ----------------------------------------------
+    #   Menu: Assemblies->Component Position->Assembly Constraints...
+    # ----------------------------------------------
+    markId54 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Create Constraints with Positioning Task")
+
+    markId55 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+
+    componentPositioner9 = workPart.ComponentAssembly.Positioner
+
+    componentPositioner9.ClearNetwork()
+
+    componentPositioner9.PrimaryArrangement = arrangement1
+
+    componentPositioner9.BeginAssemblyConstraints()
+
+    allowInterpartPositioning8 = theSession.Preferences.Assemblies.InterpartPositioning
+
+    expression167 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+
+    expression168 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression169 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+
+    expression170 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+
+    expression171 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+
+    expression172 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression173 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+
+    expression174 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+
+    network9 = componentPositioner9.EstablishNetwork()
+
+    componentNetwork9 = network9
+    componentNetwork9.MoveObjectsState = True
+
+    componentNetwork9.DisplayComponent = NXOpen.Assemblies.Component.Null
+
+    componentNetwork9.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+
+    theSession.SetUndoMarkName(markId55, "Assembly Constraints Dialog")
+
+    componentNetwork9.MoveObjectsState = True
+
+    componentNetwork9.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+
+    markId56 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+
+    component8 = nXObject5
+    face3 = component8.FindObject("PROTO#.Features|EXTRUDE(2)|FACE 140 {(17.5000000000006,0,12.5) EXTRUDE(2)}")
+    line4 = workPart.Lines.CreateFaceAxis(face3, NXOpen.SmartObject.UpdateOption.AfterModeling)
+
+    objects4 = [NXOpen.TaggedObject.Null] * 1 
+    objects4[0] = line4
+    nErrs23 = theSession.UpdateManager.AddObjectsToDeleteList(objects4)
+
+    markId57 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Create Constraint")
+
+    constraint3 = componentPositioner9.CreateConstraint(True)
+
+    componentConstraint3 = constraint3
+    componentConstraint3.ConstraintType = NXOpen.Positioning.Constraint.Type.Concentric
+
+    edge3 = component8.FindObject("PROTO#.Features|EXTRUDE(2)|EDGE * 130 * 150 {(-1.25,-2.1650635094611,25)(2.5,0,25)(-1.25,2.1650635094611,25) EXTRUDE(2)}")
+    constraintReference4 = componentConstraint3.CreateConstraintReference(component8, edge3, False, False, False)
+
+    helpPoint3 = NXOpen.Point3d(-198.91307455579246, -155.04297665469076, 25.0)
+    constraintReference4.HelpPoint = helpPoint3
+
+    edge4 = component2.FindObject("PROTO#.Features|EXTRUDE(2)|EDGE * 130 EXTRUDE(7) 170 {(150,154.8445554337723,8.7500000000001)(150,152.6794919243112,12.5000000000001)(150,150.5144284148501,8.7500000000001) EXTRUDE(2)}")
+    constraintReference5 = componentConstraint3.CreateConstraintReference(component2, edge4, False, False, False)
+
+    helpPoint4 = NXOpen.Point3d(150.0, 150.58781378464414, 11.369263510080874)
+    constraintReference5.HelpPoint = helpPoint4
+
+    constraintReference5.SetFixHint(True)
+
+    componentNetwork9.Solve()
+
+    markId58 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints")
+
+    theSession.DeleteUndoMark(markId58, None)
+
+    markId59 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints")
+
+    nErrs24 = theSession.UpdateManager.DoUpdate(markId56)
+
+    componentNetwork9.Solve()
+
+    componentPositioner9.ClearNetwork()
+
+    nErrs25 = theSession.UpdateManager.AddToDeleteList(componentNetwork9)
+
+    componentPositioner9.DeleteNonPersistentConstraints()
+
+    nErrs26 = theSession.UpdateManager.DoUpdate(markId56)
+
+    theSession.DeleteUndoMark(markId59, None)
+
+    theSession.SetUndoMarkName(markId55, "Assembly Constraints")
+
+    componentPositioner9.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+
+    componentPositioner9.EndAssemblyConstraints()
+
+    theSession.DeleteUndoMark(markId56, None)
+
+    theSession.DeleteUndoMark(markId57, None)
+
+    theSession.DeleteUndoMark(markId54, None)
+
+    # ----------------------------------------------
+    #   Menu: Assemblies->Component Position->Assembly Constraints...
+    # ----------------------------------------------
+    markId60 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Create Constraints with Positioning Task")
+
+    markId61 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+
+    componentPositioner10 = workPart.ComponentAssembly.Positioner
+
+    componentPositioner10.ClearNetwork()
+
+    componentPositioner10.PrimaryArrangement = arrangement1
+
+    componentPositioner10.BeginAssemblyConstraints()
+
+    allowInterpartPositioning9 = theSession.Preferences.Assemblies.InterpartPositioning
+
+    expression175 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+
+    expression176 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression177 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+
+    expression178 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+
+    expression179 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+
+    expression180 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression181 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+
+    expression182 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+
+    network10 = componentPositioner10.EstablishNetwork()
+
+    componentNetwork10 = network10
+    componentNetwork10.MoveObjectsState = True
+
+    componentNetwork10.DisplayComponent = NXOpen.Assemblies.Component.Null
+
+    componentNetwork10.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+
+    theSession.SetUndoMarkName(markId61, "Assembly Constraints Dialog")
+
+    componentNetwork10.MoveObjectsState = True
+
+    componentNetwork10.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+
+    markId62 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+
+    component9 = nXObject6
+    face4 = component9.FindObject("PROTO#.Features|EXTRUDE(2)|FACE 150 {(2.5,0,12.5) EXTRUDE(2)}")
+    line5 = workPart.Lines.CreateFaceAxis(face4, NXOpen.SmartObject.UpdateOption.AfterModeling)
+
+    objects5 = [NXOpen.TaggedObject.Null] * 1 
+    objects5[0] = line5
+    nErrs27 = theSession.UpdateManager.AddObjectsToDeleteList(objects5)
+
+    rotMatrix1 = NXOpen.Matrix3x3()
+
+    rotMatrix1.Xx = 0.45366258787803854
+    rotMatrix1.Xy = -0.76701102354656037
+    rotMatrix1.Xz = 0.45374480285492885
+    rotMatrix1.Yx = -0.1959800803550287
+    rotMatrix1.Yy = 0.41082383956971097
+    rotMatrix1.Yz = 0.89040192101389637
+    rotMatrix1.Zx = -0.86935727089835602
+    rotMatrix1.Zy = -0.49286698266292717
+    rotMatrix1.Zz = 0.036056524193339344
+    translation1 = NXOpen.Point3d(-42.89345626539594, -28.057291071683537, 160.92034910240707)
+    workPart.ModelingViews.WorkView.SetRotationTranslationScale(rotMatrix1, translation1, 0.42299042193146791)
+
+    face5 = component2.FindObject("PROTO#.Features|EXTRUDE(7)|FACE 160 {(7.5,72.6794919243113,7.5) EXTRUDE(2)}")
+    line6 = workPart.Lines.CreateFaceAxis(face5, NXOpen.SmartObject.UpdateOption.AfterModeling)
+
+    markId63 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Create Constraint")
+
+    constraint4 = componentPositioner10.CreateConstraint(True)
+
+    componentConstraint4 = constraint4
+    componentConstraint4.ConstraintType = NXOpen.Positioning.Constraint.Type.Concentric
+
+    edge5 = component9.FindObject("PROTO#.Features|EXTRUDE(2)|EDGE * 130 * 150 {(-1.25,-2.1650635094611,25)(2.5,0,25)(-1.25,2.1650635094611,25) EXTRUDE(2)}")
+    constraintReference6 = componentConstraint4.CreateConstraintReference(component9, edge5, False, False, False)
+
+    helpPoint5 = NXOpen.Point3d(-22.962136039840782, -210.35058013546498, 25.0)
+    constraintReference6.HelpPoint = helpPoint5
+
+    edge6 = component2.FindObject("PROTO#.Features|EXTRUDE(7)|EDGE * 160 EXTRUDE(2) 120 {(0,71.4294919243113,7.834936490539)(0,75.1794919243113,10)(0,71.4294919243113,12.1650635094611) EXTRUDE(2)}")
+    constraintReference7 = componentConstraint4.CreateConstraintReference(component2, edge6, False, False, False)
+
+    helpPoint6 = NXOpen.Point3d(0.0, 74.687129197034764, 11.489762592217781)
+    constraintReference7.HelpPoint = helpPoint6
+
+    constraintReference7.SetFixHint(True)
+
+    objects6 = [NXOpen.TaggedObject.Null] * 1 
+    objects6[0] = line6
+    nErrs28 = theSession.UpdateManager.AddObjectsToDeleteList(objects6)
+
+    componentNetwork10.Solve()
+
+    markId64 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Reverse Last Constraint")
+
+    componentConstraint4.FlipAlignment()
+
+    componentNetwork10.Solve()
+
+    markId65 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints")
+
+    theSession.DeleteUndoMark(markId65, None)
+
+    markId66 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints")
+
+    nErrs29 = theSession.UpdateManager.DoUpdate(markId62)
+
+    componentNetwork10.Solve()
+
+    componentPositioner10.ClearNetwork()
+
+    nErrs30 = theSession.UpdateManager.AddToDeleteList(componentNetwork10)
+
+    componentPositioner10.DeleteNonPersistentConstraints()
+
+    nErrs31 = theSession.UpdateManager.DoUpdate(markId62)
+
+    theSession.DeleteUndoMark(markId66, None)
+
+    theSession.SetUndoMarkName(markId61, "Assembly Constraints")
+
+    componentPositioner10.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+
+    componentPositioner10.EndAssemblyConstraints()
+
+    theSession.DeleteUndoMark(markId62, None)
+
+    theSession.DeleteUndoMark(markId64, None)
+
+    theSession.DeleteUndoMark(markId63, None)
+
+    theSession.DeleteUndoMark(markId60, None)
+
+    rotMatrix2 = NXOpen.Matrix3x3()
+
+    rotMatrix2.Xx = 0.81575517540830234
+    rotMatrix2.Xy = -0.50854228710873584
+    rotMatrix2.Xz = 0.27555078663793636
+    rotMatrix2.Yx = 0.18599054936849596
+    rotMatrix2.Yy = 0.68173644986376392
+    rotMatrix2.Yz = 0.70756125421956029
+    rotMatrix2.Zx = -0.54767783353005528
+    rotMatrix2.Zy = -0.52594691286228534
+    rotMatrix2.Zz = 0.65071409659731294
+    translation2 = NXOpen.Point3d(-74.931663838994879, -62.184307332470539, 82.793348791114227)
+    workPart.ModelingViews.WorkView.SetRotationTranslationScale(rotMatrix2, translation2, 0.42299042193146791)
+
+    # ----------------------------------------------
+    #   Menu: Assemblies->Component Position->Assembly Constraints...
+    # ----------------------------------------------
+    markId67 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Create Constraints with Positioning Task")
+
+    markId68 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+
+    componentPositioner11 = workPart.ComponentAssembly.Positioner
+
+    componentPositioner11.ClearNetwork()
+
+    componentPositioner11.PrimaryArrangement = arrangement1
+
+    componentPositioner11.BeginAssemblyConstraints()
+
+    allowInterpartPositioning10 = theSession.Preferences.Assemblies.InterpartPositioning
+
+    expression183 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+
+    expression184 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression185 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+
+    expression186 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+
+    expression187 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+
+    expression188 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+
+    expression189 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+
+    expression190 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+
+    network11 = componentPositioner11.EstablishNetwork()
+
+    componentNetwork11 = network11
+    componentNetwork11.MoveObjectsState = True
+
+    componentNetwork11.DisplayComponent = NXOpen.Assemblies.Component.Null
+
+    componentNetwork11.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+
+    theSession.SetUndoMarkName(markId68, "Assembly Constraints Dialog")
+
+    componentNetwork11.MoveObjectsState = True
+
+    componentNetwork11.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+
+    markId69 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+
+    markId70 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Create Constraint")
+
+    constraint5 = componentPositioner11.CreateConstraint(True)
+
+    componentConstraint5 = constraint5
+    componentConstraint5.ConstraintType = NXOpen.Positioning.Constraint.Type.Concentric
+
+    component10 = nXObject3
+    edge7 = component10.FindObject("PROTO#.Features|EXTRUDE(2)|EDGE * 130 * 150 {(-1.25,-2.1650635094611,25)(2.5,0,25)(-1.25,2.1650635094611,25) EXTRUDE(2)}")
+    constraintReference8 = componentConstraint5.CreateConstraintReference(component10, edge7, False, False, False)
+
+    helpPoint7 = NXOpen.Point3d(186.44304540006155, -66.469276294462347, 25.0)
+    constraintReference8.HelpPoint = helpPoint7
+
+    edge8 = component2.FindObject("PROTO#.Features|EXTRUDE(7)|EDGE * 170 EXTRUDE(2) 120 {(0,151.4294919243112,7.834936490539)(0,155.1794919243112,10.0000000000001)(0,151.4294919243112,12.1650635094612) EXTRUDE(2)}")
+    constraintReference9 = componentConstraint5.CreateConstraintReference(component2, edge8, False, False, False)
+
+    helpPoint8 = NXOpen.Point3d(0.0, 154.90268204873817, 11.14342716018588)
+    constraintReference9.HelpPoint = helpPoint8
+
+    constraintReference9.SetFixHint(True)
+
+    componentNetwork11.Solve()
+
+    markId71 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Reverse Last Constraint")
+
+    componentConstraint5.FlipAlignment()
+
+    componentNetwork11.Solve()
+
+    markId72 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints")
+
+    theSession.DeleteUndoMark(markId72, None)
+
+    markId73 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints")
+
+    nErrs32 = theSession.UpdateManager.DoUpdate(markId69)
+
+    componentNetwork11.Solve()
+
+    componentPositioner11.ClearNetwork()
+
+    nErrs33 = theSession.UpdateManager.AddToDeleteList(componentNetwork11)
+
+    componentPositioner11.DeleteNonPersistentConstraints()
+
+    nErrs34 = theSession.UpdateManager.DoUpdate(markId69)
+
+    theSession.DeleteUndoMark(markId73, None)
+
+    theSession.SetUndoMarkName(markId68, "Assembly Constraints")
+
+    componentPositioner11.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+
+    componentPositioner11.EndAssemblyConstraints()
+
+    theSession.DeleteUndoMark(markId69, None)
+
+    theSession.DeleteUndoMark(markId71, None)
+
+    theSession.DeleteUndoMark(markId70, None)
+
+    theSession.DeleteUndoMark(markId67, None)
+
+    rotMatrix3 = NXOpen.Matrix3x3()
+
+    rotMatrix3.Xx = 0.87378741152370409
+    rotMatrix3.Xy = 0.43009446556817216
+    rotMatrix3.Xz = 0.22696764119655954
+    rotMatrix3.Yx = -0.37707712434703017
+    rotMatrix3.Yy = 0.30448250184736703
+    rotMatrix3.Yz = 0.87470180539595277
+    rotMatrix3.Zx = 0.30709673029336282
+    rotMatrix3.Zy = -0.84988773185427069
+    rotMatrix3.Zz = 0.42823176141749308
+    translation3 = NXOpen.Point3d(-169.08757331287359, 3.8029173786093153, 69.672599475494593)
+    workPart.ModelingViews.WorkView.SetRotationTranslationScale(rotMatrix3, translation3, 0.42299042193146791)
+
+    # ----------------------------------------------
+    #   Menu: Tools->Journal->Stop Recording
+    # ----------------------------------------------
+
+if __name__ == '__main__':
+    main()
