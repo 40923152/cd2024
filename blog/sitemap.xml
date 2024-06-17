@@ -5,29 +5,36 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>./</loc>
-<lastmod>2024-06-17T08:53:02-00:00</lastmod>
+<lastmod>2024-06-17T09:13:33-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./archives.html</loc>
-<lastmod>2024-06-17T08:53:02-00:00</lastmod>
+<lastmod>2024-06-17T09:13:33-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./tags.html</loc>
-<lastmod>2024-06-17T08:53:02-00:00</lastmod>
+<lastmod>2024-06-17T09:13:33-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./categories.html</loc>
-<lastmod>2024-06-17T08:53:02-00:00</lastmod>
+<lastmod>2024-06-17T09:13:33-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./2024-Spring-40923152w16-blog.html</loc>
+<lastmod>2024-06-17T09:09:27+08:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -123,6 +130,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>./category/w16.html</loc>
+<lastmod>2024-06-17T09:09:27+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>./category/w2.html</loc>
 <lastmod>2024-05-23T07:18:52+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -166,14 +180,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>./tag/wang-zhi-bian-xie.html</loc>
-<lastmod>2024-06-17T08:52:46+08:06</lastmod>
+<lastmod>2024-06-17T09:09:27+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./author/40923152.html</loc>
-<lastmod>2024-06-17T08:52:46+08:06</lastmod>
+<lastmod>2024-06-17T09:09:27+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
