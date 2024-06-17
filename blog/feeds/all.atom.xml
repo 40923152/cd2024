@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>40923152協同產品設計實習</title><link href="./" rel="alternate"></link><link href="./feeds/all.atom.xml" rel="self"></link><id>./</id><updated>2024-06-17T09:31:10+08:00</updated><entry><title>2024 Spring 課程W17</title><link href="./2024-Spring-40923152w17-blog.html" rel="alternate"></link><published>2024-06-16T11:00:00+08:00</published><updated>2024-06-17T09:31:10+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-06-16:./2024-Spring-40923152w17-blog.html</id><summary type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>40923152協同產品設計實習</title><link href="./" rel="alternate"></link><link href="./feeds/all.atom.xml" rel="self"></link><id>./</id><updated>2024-06-17T09:34:49+08:00</updated><entry><title>2024 Spring 課程W17</title><link href="./2024-Spring-40923152w17-blog.html" rel="alternate"></link><published>2024-06-16T11:00:00+08:00</published><updated>2024-06-17T09:34:49+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-06-16:./2024-Spring-40923152w17-blog.html</id><summary type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
 
 
 &lt;h1&gt;WEEK17&lt;/h1&gt;
 &lt;p&gt;填寫&lt;a href="https://docs.google.com/forms/d/e/1FAIpQLSdd4WdqZCfabonlM8jOzdpd3jQl_831C_7qXJBZuL8nOQ5NWA/viewform?pli=1"&gt;自評表&lt;/a&gt;,以及完成w17項目&lt;/p&gt;
-&lt;p&gt;項目一 利用NX繪製機器人本體及輪子
-&lt;a href="https://www.youtube.com/watch?v=H0IltQUlzRo&amp;amp;t=331s"&gt;機器人&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;項目二
-以 NXOpen Python程式完成組立,挑選機器人本體及輪子作為組立
-&lt;a href="https://www.youtube.com/watch?v=XDWbn2sRArM&amp;amp;t=57s"&gt;組裝過程&lt;/a&gt;
+&lt;p&gt;項目一 利用NX繪製機器人本體及輪子&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=H0IltQUlzRo&amp;amp;t=331s"&gt;機器人&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;項目二 以 NXOpen Python程式完成組立,挑選機器人本體及輪子作為組立&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=XDWbn2sRArM&amp;amp;t=57s"&gt;組裝過程&lt;/a&gt;
 &lt;a href="https://drive.google.com/file/d/1y7I2W4Qhn1x_mWO4wa_-LImutRRVMfTZ/view"&gt;PY檔&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;項目三
-將所完成的機器人球員放入 CoppeliaSim 運動場景中,讓球員可以由 ZMQ Remote API 程式控制&lt;/p&gt;</content><category term="w17"></category><category term="網誌編寫"></category></entry><entry><title>2024 Spring 課程W16</title><link href="./2024-Spring-40923152w16-blog.html" rel="alternate"></link><published>2024-06-09T11:00:00+08:00</published><updated>2024-06-17T09:09:27+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-06-09:./2024-Spring-40923152w16-blog.html</id><summary type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
+&lt;p&gt;項目三 將所完成的機器人球員放入 CoppeliaSim 運動場景中,讓球員可以由 ZMQ Remote API 程式控制&lt;/p&gt;</content><category term="w17"></category><category term="網誌編寫"></category></entry><entry><title>2024 Spring 課程W16</title><link href="./2024-Spring-40923152w16-blog.html" rel="alternate"></link><published>2024-06-09T11:00:00+08:00</published><updated>2024-06-17T09:09:27+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-06-09:./2024-Spring-40923152w16-blog.html</id><summary type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
 
 
