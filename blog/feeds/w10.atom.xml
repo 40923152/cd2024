@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>40923152協同產品設計實習 - w10</title><link href="./" rel="alternate"></link><link href="./feeds/w10.atom.xml" rel="self"></link><id>./</id><updated>2024-05-23T08:19:10+08:00</updated><entry><title>2024 Spring 課程W10</title><link href="./2024-Spring-40923152w10-blog.html" rel="alternate"></link><published>2024-03-24T11:00:00+08:00</published><updated>2024-05-23T08:19:10+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-03-24:./2024-Spring-40923152w10-blog.html</id><summary type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>40923152協同產品設計實習 - w10</title><link href="./" rel="alternate"></link><link href="./feeds/w10.atom.xml" rel="self"></link><id>./</id><updated>2024-06-17T08:43:26+08:00</updated><entry><title>2024 Spring 課程W10</title><link href="./2024-Spring-40923152w10-blog.html" rel="alternate"></link><published>2024-03-24T11:00:00+08:00</published><updated>2024-06-17T08:43:26+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-03-24:./2024-Spring-40923152w10-blog.html</id><summary type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
 
 
@@ -27,4 +27,5 @@
 &lt;p&gt;論文六 Simulation_and_Experimental_Study_of_Ball_Position&lt;/p&gt;
 &lt;p&gt;摘要:本研究旨在開發一種利用微控制器和相關控制算法，通過實時感測反饋調整梁的角度來保持球平衡的系統。該系統使用閉環實時控制來最小化實際位置與預期位置之間的誤差。此教育工具有助於學生學習並應用比例-積分-微分（PID）控制原理。&lt;/p&gt;
 &lt;p&gt;結論:本研究展示了球平衡系統作為教育工具的有效性，有助於學生理解和應用閉環反饋控制理論。&lt;/p&gt;
-&lt;h1&gt;任務三 鋼球平衡台零組件繪圖&lt;/h1&gt;</content><category term="w10"></category><category term="網誌編寫"></category></entry></feed>
+&lt;h1&gt;任務三 鋼球平衡台零組件繪圖&lt;/h1&gt;
+&lt;p&gt;請根據 Solvespace_model _2d_for_cd2024_w6.7z 零組件尺寸, 利用 Siemens NX1872.7z (需要登入 @nfu.edu.tw, cd2024 採用電腦安裝的 NX1872 或隨身碟中的 NX1872) 執行零組件繪圖, 完成後請將過程影片放入個人與分組網站中.&lt;/p&gt;</content><category term="w10"></category><category term="網誌編寫"></category></entry></feed>
