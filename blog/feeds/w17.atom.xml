@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>40923152協同產品設計實習 - w17</title><link href="./" rel="alternate"></link><link href="./feeds/w17.atom.xml" rel="self"></link><id>./</id><updated>2024-06-20T10:18:41+08:00</updated><entry><title>2024 Spring 課程W17</title><link href="./2024-Spring-40923152w17-blog.html" rel="alternate"></link><published>2024-06-16T11:00:00+08:00</published><updated>2024-06-20T10:18:41+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-06-16:./2024-Spring-40923152w17-blog.html</id><summary type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>40923152協同產品設計實習 - w17</title><link href="./" rel="alternate"></link><link href="./feeds/w17.atom.xml" rel="self"></link><id>./</id><updated>2024-06-22T07:44:48+08:00</updated><entry><title>2024 Spring 課程W17</title><link href="./2024-Spring-40923152w17-blog.html" rel="alternate"></link><published>2024-06-16T11:00:00+08:00</published><updated>2024-06-22T07:44:48+08:00</updated><author><name>40923152</name></author><id>tag:None,2024-06-16:./2024-Spring-40923152w17-blog.html</id><summary type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;2024 Spring 協同產品設計實習課程&lt;/p&gt;
 
 
@@ -12,4 +12,7 @@
 &lt;a href="https://drive.google.com/file/d/1y7I2W4Qhn1x_mWO4wa_-LImutRRVMfTZ/view"&gt;PY檔&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;項目三 將所完成的機器人球員放入 CoppeliaSim 運動場景中,讓球員可以由 ZMQ Remote API 程式控制&lt;/p&gt;
 &lt;p&gt;目前失敗 但還在測試&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=wgIv1OWoTBs"&gt;YOUTUBE網址&lt;/a&gt;&lt;/p&gt;</content><category term="w17"></category><category term="網誌編寫"></category></entry></feed>
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=wgIv1OWoTBs"&gt;YOUTUBE網址&lt;/a&gt;
+第二版
+&lt;a href="https://www.youtube.com/watch?v=ZN_oUCGL7pI"&gt;YOUTUBE網址&lt;/a&gt;
+&lt;a href="https://drive.google.com/drive/folders/1wVMjcRDyb9M_fbpaADgDr_sIZDrGK54t"&gt;程式碼、ttt檔&lt;/a&gt;&lt;/p&gt;</content><category term="w17"></category><category term="網誌編寫"></category></entry></feed>
